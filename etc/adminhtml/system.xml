@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Push Notification Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="web">
+            <group id="konstanchuk_push_notification" translate="label" type="text" sortOrder="1000" showInDefault="1"
+                   showInWebsite="0" showInStore="0">
+                <label>Web Push Notification</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0"
+                       showInStore="0" canRestore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="site_name" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Site Name</label>
+                </field>
+                <field id="gcm_server_key" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Gcm Sender Key</label>
+                </field>
+                <field id="gcm_sender_id" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Gcm Sender ID</label>
+                </field>
+                <field id="default_image" translate="label comment" type="image" sortOrder="40" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Default Image</label>
+                    <comment>Allowed file types: jpg, jpeg, gif, png</comment>
+                    <backend_model>Konstanchuk\PushNotification\Model\System\Config\SaveImage</backend_model>
+                    <base_url type="media" scope_info="1">push_notification/config/image</base_url>
+                </field>
+                <field id="subscribe_on_btn" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0"
+                       showInStore="0" canRestore="0">
+                    <label>Subscribe/Unsubscribe On Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="subscribe_btn_css_class" translate="label comment" type="text" sortOrder="60" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Subscribe/Unsubscribe Button CSS Class</label>
+                </field>
+                <field id="subscribe_btn_text" translate="label comment" type="text" sortOrder="70" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Subscribe Button Text</label>
+                </field>
+                <field id="unsubscribe_btn_text" translate="label comment" type="text" sortOrder="80" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Unsubscribe Button Text</label>
+                </field>
+                <field id="notification_ttl" translate="label comment" type="text" sortOrder="90" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Default Notification TTL</label>
+                </field>
+                <field id="notification_urgency" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="0"
+                       showInStore="0" canRestore="0">
+                    <label>Default Notification Urgency</label>
+                    <source_model>Konstanchuk\PushNotification\Model\Notification\Urgency</source_model>
+                </field>
+                <field id="notification_batch_size" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="0"
+                       showInStore="0" canRestore="0">
+                    <label>Notification Batch Size</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

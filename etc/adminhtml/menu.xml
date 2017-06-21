@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Push Notification Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Konstanchuk_PushNotification::main_menu" translate="title" title="Push Notification"
+             module="Konstanchuk_PushNotification" sortOrder="20"
+             resource="Konstanchuk_PushNotification::push_notification" />
+        <add id="Konstanchuk_PushNotification::manage_template" translate="title" title="Manage Templates"
+             module="Konstanchuk_PushNotification" sortOrder="30" parent="Konstanchuk_PushNotification::main_menu"
+             action="push_notification/template/index" resource="Konstanchuk_PushNotification::manage_template" />
+        <add id="Konstanchuk_PushNotification::manage_user" translate="title" title="Manage Users"
+             module="Konstanchuk_PushNotification" sortOrder="40" parent="Konstanchuk_PushNotification::main_menu"
+             action="push_notification/user/index" resource="Konstanchuk_PushNotification::manage_user" />
+        <add id="Konstanchuk_PushNotification::manage_process" translate="title" title="Manage Process"
+             module="Konstanchuk_PushNotification" sortOrder="50" parent="Konstanchuk_PushNotification::main_menu"
+             action="push_notification/process/index" resource="Konstanchuk_PushNotification::manage_process" />
+    </menu>
+</config>

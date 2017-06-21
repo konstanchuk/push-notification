@@ -1,0 +1,11 @@
+google-chrome --user-data-dir=/tmp/foo --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://magento2.loc
+
+To install GMP on PHP7 on Ubuntu:
+Run: sudo apt-get install php7.0-gmp
+
+And add the following to php.ini:
+extension=php_gmp.so
+
+composer require minishlink/web-push
+
+sudo php bin/magento push-notification:run

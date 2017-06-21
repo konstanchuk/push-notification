@@ -1,0 +1,39 @@
+/**
+ * Push Notification Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+.pn-endpoint-grid-column {
+    text-overflow: ellipsis;
+    max-width: 400px;
+}
+
+.pn-awaited-status {
+    background: #a9e5e5 none repeat scroll 0 0;
+    border-color: #168172;
+    color: #004d5b;
+}
+
+.pn-in-process-status {
+    background: #e5e272 none repeat scroll 0 0;
+    border-color: #73812f;
+    color: #585b2f;
+}
+
+.push-notification-json {
+    position: relative;
+    padding-left: 7px;
+}
+
+.push-notification-json .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: orangered;
+    color: white;
+}

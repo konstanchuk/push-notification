@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * Push Notification Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+
+/** @var $block \Konstanchuk\PushNotification\Block\Block */
+
+$helper = $block->getHelper();
+
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "konstanchuk/pushNotification": {
+                "service_worker": <?php echo json_encode('/sw.js'); ?>,
+                "subscribe_on_btn": <?php echo json_encode($helper->getSubscribeOnBtn()); ?>,
+                "subscribe_url": <?php echo json_encode($block->getUrl('push_notification/user/subscribe')); ?>,                 "unsubscribe_url": <?php echo json_encode($block->getUrl('push_notification/user/unsubscribe')); ?>,
+                "statistics_click_url": <?php echo json_encode($block->getUrl('push_notification/statistics/click')); ?>,
+                "subscribe_btn_css_class": <?php echo json_encode($helper->getSubscribeBtnCssClass()); ?>,
+                "subscribe_btn_text": <?php echo json_encode($helper->getSubscribeBtnText()); ?>,
+                "unsubscribe_btn_text": <?php echo json_encode($helper->getUnSubscribeBtnText()); ?>
+            }
+        }
+    }
+</script>

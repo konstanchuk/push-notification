@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Push Notification Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Konstanchuk_PushNotification::css/style.css" />
+    </head>
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Konstanchuk\PushNotification\Block\Block"
+                   name="konstanchuk_push_notification_head"
+                   template="Konstanchuk_PushNotification::manifest.phtml"/>
+        </referenceBlock>
+        <referenceBlock name="content">
+            <block class="Konstanchuk\PushNotification\Block\Block"
+                   name="konstanchuk_push_notification_init"
+                   template="Konstanchuk_PushNotification::script.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

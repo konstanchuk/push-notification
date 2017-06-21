@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Push Notification Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- start users -->
+    <preference for="Konstanchuk\PushNotification\Api\UserRepositoryInterface"
+                type="Konstanchuk\PushNotification\Model\UserRepository"/>
+    <preference for="Konstanchuk\PushNotification\Api\Data\UserInterface"
+                type="Konstanchuk\PushNotification\Model\User"/>
+    <preference for="Konstanchuk\PushNotification\Api\Data\UserSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <!-- end users -->
+    <!-- start template -->
+    <preference for="Konstanchuk\PushNotification\Api\TemplateRepositoryInterface"
+                type="Konstanchuk\PushNotification\Model\TemplateRepository"/>
+    <preference for="Konstanchuk\PushNotification\Api\Data\TemplateInterface"
+                type="Konstanchuk\PushNotification\Model\Template"/>
+    <preference for="Konstanchuk\PushNotification\Api\Data\TemplateSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <!-- end template -->
+    <!-- start process -->
+    <preference for="Konstanchuk\PushNotification\Api\ProcessRepositoryInterface"
+                type="Konstanchuk\PushNotification\Model\ProcessRepository"/>
+    <preference for="Konstanchuk\PushNotification\Api\Data\ProcessInterface"
+                type="Konstanchuk\PushNotification\Model\Process"/>
+    <preference for="Konstanchuk\PushNotification\Api\Data\ProcessSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <!-- end process -->
+
+    <!-- start template grid -->
+    <virtualType name="PushNotificationTemplateGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="PushNotificationTemplateGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Konstanchuk\PushNotification\Model\ResourceModel\Template\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">PushNotificationTemplateGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Konstanchuk\PushNotification\Model\ResourceModel\Template\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">konstanchuk_pn_template</argument>
+            <argument name="resourceModel" xsi:type="string">Konstanchuk\PushNotification\Model\ResourceModel\Template</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="push_notification_template_listing_data_source" xsi:type="string">Konstanchuk\PushNotification\Model\ResourceModel\Template\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end template grid -->
+
+    <!-- start user grid -->
+    <virtualType name="PushNotificationUserGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="PushNotificationUserGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Konstanchuk\PushNotification\Model\ResourceModel\Template\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">PushNotificationUserGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="push_notification_user_listing_data_source" xsi:type="string">Konstanchuk\PushNotification\Model\ResourceModel\User\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end user grid -->
+
+    <!-- start process grid -->
+    <virtualType name="PushNotificationProcessGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="PushNotificationProcessGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Konstanchuk\PushNotification\Model\ResourceModel\Process\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">PushNotificationProcessGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="push_notification_process_listing_data_source" xsi:type="string">Konstanchuk\PushNotification\Model\ResourceModel\Process\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end process grid -->
+
+    <!-- start template upload image -->
+    <type name="Konstanchuk\PushNotification\Controller\Adminhtml\Template\Image">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">PushNotificationTemplateImageUpload</argument>
+        </arguments>
+    </type>
+    <virtualType name="PushNotificationTemplateImageUpload" type="Konstanchuk\PushNotification\Model\Template\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">push_notification/image</argument>
+            <argument name="basePath" xsi:type="string">push_notification/image</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- end template upload image -->
+
+    <!-- start custom logger -->
+    <type name="Konstanchuk\PushNotification\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Konstanchuk\PushNotification\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">pushNotificationLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Konstanchuk\PushNotification\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end custom logger -->
+
+    <!-- start console -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="konstanchuk_push_notification" xsi:type="object">Konstanchuk\PushNotification\Console\SendNotification</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end console -->
+
+</config>

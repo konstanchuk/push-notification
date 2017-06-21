@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Push Notification Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <web>
+            <konstanchuk_push_notification>
+                <active>0</active>
+                <site_name><![CDATA[Magento Store]]></site_name>
+                <subscribe_on_btn>0</subscribe_on_btn>
+                <subscribe_btn_css_class><![CDATA[.push-notification-btn]]></subscribe_btn_css_class>
+                <subscribe_btn_text><![CDATA[subscribe]]></subscribe_btn_text>
+                <unsubscribe_btn_text><![CDATA[unsubscribe]]></unsubscribe_btn_text>
+                <notification_ttl>2419200</notification_ttl>
+                <notification_urgency><![CDATA[normal]]></notification_urgency>
+                <notification_batch_size>1000</notification_batch_size>
+            </konstanchuk_push_notification>
+        </web>
+    </default>
+</config>
